@@ -5,6 +5,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Resource">
+      <UniqueIdentifier>{497be77f-343c-4f57-9d46-6c2f94020b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Compunts">
+      <UniqueIdentifier>{92a9d25a-1727-42b9-a2eb-448297651b9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -15,6 +21,27 @@
     </ClCompile>
     <ClCompile Include="Emitter.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.h">
+      <Filter>Source\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcesManger.cpp">
+      <Filter>Source\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\SpriteComponent.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\ModelRenderCompents.h">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\ModelRenderCompents.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\EnginePhyiscComponent.h">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\EnginePhyiscComponent.cpp">
+      <Filter>Source\Compunts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +55,24 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Source\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\Component.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\RenderCompunts.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\SpriteComponet.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\PhysicComponent.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

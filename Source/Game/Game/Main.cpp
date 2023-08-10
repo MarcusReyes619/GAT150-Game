@@ -10,10 +10,13 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "SpaceGame.h"
-
+#include "Framework/ResourceManager.h"
+#include "Renderer/Texture.h"
 #include <iostream>
 #include <vector>
 #include <thread>
+#include <array>
+#include <map>
 
 using namespace std;
 
@@ -42,11 +45,87 @@ public:
 	kiko::vec2 m_vel;
 };
 
+//template <typename T>
+//void print(const std::string& s, const T& container)
+//{
+//	std::cout << s << std::endl;
+//		for (auto element : container)
+//		{
+//			std::cout << element << " ";
+//		}
+//	std::cout << std::endl;
+//}
+void print_arg(int count, ...)
+{
+	va_list args;
+
+
+
+	va_start(args, count);
+	for (int i = 0; i < count; ++i)
+	{
+		std::cout << va_arg(args, const char*) << std::endl;
+	}
+	va_end(args);
+}
+
+void zero(int i) {
+	i = 0;
+}
 
 
 int main(int argc, char* argv[])
 {
-	INFO_LOG;
+	int p =  5;
+	zero(p);
+
+	//int n[4] = { 1, 2, 3, 4 };
+	//print("array: ", n);
+	//cout << n << endl;
+	////pointer arrmetic
+	////points to the number in the array
+	//cout << *(n + 1) << endl;
+
+
+	//std::array<int, 4> na = { 1, 2, 3, 4 };
+	//print("array class: ", na);
+	//cout << na.front() << endl;
+	//cout << na.back() << endl;
+
+	//std::vector<int> nv = { 1, 2, 3, 4 };
+	//print("vector: ", nv);
+	//nv.insert(nv.begin() + 2, 0);
+	//print("vector: ", nv);
+
+	//std::list<int> nl = { 1, 2, 3, 4 };
+	//print("list:", nl);
+	//nl.push_front(0);
+	//print("list:", nl);
+
+
+	////Maps use keys to find vaules like names pointing to vaules
+	//std::map<std::string, int> ages;
+	//ages["Marcus"] = 17;
+	//ages["Sweites"] = 10;
+	//ages["ash"] = 9;
+	//ages["ash"] = 69;
+	//cout << ages["Marcus"] << endl;
+	//cout << ages["ash"] << endl;
+
+	//std::map<std::string, string> test;
+	//test["doggy"] = "style";
+	//cout << test["doggy"] << endl;
+	
+
+	//ASSERT_LOG(j != 0, "vaule is invalid,cant be a zero vaule");
+
+
+
+
+
+	//MAIN CODE
+
+	INFO_LOG("Initialize Engine");
 
 	kiko::MemoryTracker::Initialize();
 	kiko::seedRandom((unsigned int)time(nullptr));
@@ -59,9 +138,14 @@ int main(int argc, char* argv[])
 	kiko::g_inputSystem.Initialize();
 	kiko::g_audioSystem.Initialize();
 
+
 	// create game
 	unique_ptr<SpaceGame> game = make_unique<SpaceGame>();
 	game->Initialize();
+
+	//Texture makeing
+	//kiko::res_t<kiko::Texture> texture = kiko::g_resources.Get<kiko::Texture>("Ship_2_C_Small.png", kiko::g_renderer);
+	
 
 	vector<Star> stars;
 	for (int i = 0; i < 1000; i++)
@@ -77,7 +161,7 @@ int main(int argc, char* argv[])
 	while (!quit)
 	{
 		// update engine
-		kiko::g_time.Tick();
+	kiko::g_time.Tick();
 		kiko::g_inputSystem.Update();
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_ESCAPE))
 		{
@@ -97,6 +181,8 @@ int main(int argc, char* argv[])
 			kiko::g_renderer.SetColor(kiko::random(256), kiko::random(256), kiko::random(256), 255);
 			star.Draw(kiko::g_renderer);
 		}
+
+	//kiko::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 
 		game->Draw(kiko::g_renderer);
 		kiko::g_particleSystem.Draw(kiko::g_renderer);

@@ -1,9 +1,7 @@
 #include "SpaceGame.h"
 #include "Player.h"
 #include "Enemy.h"
-
-#include "Framework/Scene.h"
-
+#include "Framework/FrameWork.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
@@ -13,7 +11,7 @@
 bool SpaceGame::Initialize()
 {
 	// create font / text objects
-	m_font = std::make_shared<kiko::Font>("arcadeclassic.ttf", 24);
+	m_font = kiko::g_resources.Get<kiko::Font>("arcadeclassic.ttf", 24);
 	m_scoreText = std::make_unique<kiko::Text>(m_font);
 	m_scoreText->Create(kiko::g_renderer, "SCORE 0000", kiko::Color{ 1, 0, 1, 1 });
 
@@ -59,10 +57,22 @@ void SpaceGame::Update(float dt)
 	case SpaceGame::eState::StartLevel:
 		m_scene->RemoveAll();
 	{
-		std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, kiko::Pi, kiko::Transform{ { 400, 300 }, 0, 6 }, kiko::g_manager.Get("ship.txt"));
+		//create player
+		std::unique_ptr<Player> player = std::make_unique<Player>(20.0f, kiko::Pi, kiko::Transform{ { 400, 300 }, 0, 3 });
 		player->m_tag = "Player";
 		player->m_game = this;
 		player->SetDamping(0.9f);
+		//m_scene->Add(std::move(player));
+		//create components
+		std::unique_ptr<kiko::ModelRenderComponent> comp = std::make_unique<kiko::ModelRenderComponent>();
+
+		comp->m_model = kiko::g_resources.Get<kiko::Model>("ship.txt");
+		player->AddComponent(std::move(comp));
+
+		auto physicComp = std::make_unique<kiko::EnginePhysicComponet>();
+		physicComp->m_damping = 0.9f;
+		player->AddComponent(std::move(physicComp));
+
 		m_scene->Add(std::move(player));
 	}
 	m_state = eState::Game;
@@ -73,7 +83,7 @@ void SpaceGame::Update(float dt)
 		if (m_spawnTimer >= m_spawnTime)
 		{
 			m_spawnTimer = 0;
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::Pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::TwoPi), 3}, kiko::g_manager.Get("enemy.txt"));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::Pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::TwoPi), 3});
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			m_scene->Add(std::move(enemy));

@@ -6,7 +6,7 @@
 
 namespace kiko
 {
-	class ModelManager
+	class ModelManager 
 	{
 	public:
 		std::shared_ptr<Model> Get(const std::string& filename);
