@@ -95,7 +95,7 @@ namespace kiko
 
 		std::string ys = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
 		v.y = std::stof(ys);
-		std::string ys = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
+		std::string zs = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
 		v.z = std::stof(ys);
 
 		return stream;

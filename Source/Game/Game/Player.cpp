@@ -1,13 +1,9 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "SpaceGame.h"
-#include "Framework/Scene.h"
-#include "Framework/Compunts/SpriteComponet.h"
-#include "Framework/Compunts/PhysicComponent.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/Texture.h"
-#include"Framework/ResourceManager.h"
+#include "Framework/FrameWork.h"
 
 void Player::Update(float dt)
 {

@@ -6,12 +6,10 @@
 #include "Framework/Scene.h"
 #include "Framework/Emitter.h"
 #include "Renderer/Text.h"
-#include "Renderer/ParticleSystem.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "SpaceGame.h"
-#include "Framework/ResourceManager.h"
-#include "Renderer/Texture.h"
+
 #include <iostream>
 #include <vector>
 #include <thread>

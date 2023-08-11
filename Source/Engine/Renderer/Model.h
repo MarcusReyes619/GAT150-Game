@@ -1,11 +1,14 @@
 #pragma once
 #include "Core/Core.h"
-#include "Renderer.h" 
+//#include "Renderer.h" 
 #include <vector>
 #include "Framework/Resources.h"
 
 namespace kiko
 {
+	class Renderer;
+
+
 	class Model : public Resource
 	{
 	public:

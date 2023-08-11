@@ -3,6 +3,7 @@
 #include "SDL2-2.28.0/include/SDL_Image.h"
 #include "Texture.h"
 
+
 namespace kiko
 {
 	Renderer g_renderer;
@@ -80,5 +81,20 @@ namespace kiko
 			dest.h = (int)size.y;
 			// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
 			SDL_RenderCopyEx(m_renderer, texture->m_texture, NULL,&dest,angle, NULL, SDL_FLIP_NONE  );
+	}
+	void Renderer::DrawTexture(Texture* tex, const Transform& transform)
+	{
+		mat3 mx = transform.GetMatrix();
+
+		vec2 postion = mx.GetTranslation();
+		vec2 size = tex->GetSize() *mx.GetScale();
+		SDL_Rect dest;
+		dest.x = (int)(postion.x - (size.x * 0.5f));
+		dest.y = (int)(postion.y - (size.y * 0.5f));
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+		// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
+		SDL_RenderCopyEx(m_renderer, tex->m_texture, NULL, &dest,RadiansToDegrees(mx.GetRotation()), NULL, SDL_FLIP_NONE);
+
 	}
 }

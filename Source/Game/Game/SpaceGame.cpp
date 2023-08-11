@@ -5,8 +5,7 @@
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/Text.h"
-#include "Renderer/ModelManager.h"
+
 
 bool SpaceGame::Initialize()
 {
@@ -64,10 +63,12 @@ void SpaceGame::Update(float dt)
 		player->SetDamping(0.9f);
 		//m_scene->Add(std::move(player));
 		//create components
-		std::unique_ptr<kiko::ModelRenderComponent> comp = std::make_unique<kiko::ModelRenderComponent>();
+		//std::unique_ptr<kiko::ModelRenderComponent> comp = std::make_unique<kiko::SpriteComponent>();
 
-		comp->m_model = kiko::g_resources.Get<kiko::Model>("ship.txt");
-		player->AddComponent(std::move(comp));
+		auto renderComp = std::make_unique<kiko::SpriteComponent>();
+
+		renderComp->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_2_C_Small.png");
+		player->AddComponent(std::move(renderComp));
 
 		auto physicComp = std::make_unique<kiko::EnginePhysicComponet>();
 		physicComp->m_damping = 0.9f;
