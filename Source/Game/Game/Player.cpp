@@ -5,6 +5,27 @@
 #include "Renderer/Renderer.h"
 #include "Framework/FrameWork.h"
 
+bool Player::Initialize()
+{
+	Actor::Initialize();
+
+
+	m_physicsComp =  GetComponent<kiko::PhyicsComponent>();
+	auto collisionComp = GetComponent<kiko::CollsionComponent>();
+	if (collisionComp) {
+
+		auto renderComp = GetComponent<kiko::RenderComponent>();
+		if (renderComp) {
+			float scale = m_transform.scale;
+			collisionComp->m_radius = GetComponent < kiko::RenderComponent>()->GetRadius() * scale;
+
+		}
+	}
+
+	
+	return true;
+}
+
 void Player::Update(float dt)
 {
 	Actor::Update(dt);
@@ -21,8 +42,8 @@ void Player::Update(float dt)
 	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(m_transform.rotation);
 	AddForce(forward * m_speed * thrust);
 
-	auto phyicsComp = GetComponent<kiko::PhyicsComponent>();
-	phyicsComp->ApplyForces(forward * m_speed * thrust);
+	
+	m_physicsComp->ApplyForces(forward * m_speed * thrust);
 
 	
 	//m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
@@ -41,6 +62,11 @@ void Player::Update(float dt)
 		comp->m_texture = kiko::g_resources.Get<kiko::Texture>("RocketPew.png", kiko::g_renderer);
 		weapon->AddComponent(std::move(comp));
 
+		auto collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+		collisonComp->m_radius = 30.0f;
+		weapon->AddComponent(std::move(collisonComp));
+
+		weapon->Initialize();
 		m_scene->Add(std::move(weapon));
 
 		kiko::Transform transform2{ m_transform.position, m_transform.rotation - kiko::DegreesToRadians(10.0f), 1 };
@@ -50,7 +76,11 @@ void Player::Update(float dt)
 		comp = std::make_unique<kiko::SpriteComponent>();
 		comp->m_texture = kiko::g_resources.Get<kiko::Texture>("RocketPew.png", kiko::g_renderer);;
 		weapon->AddComponent(std::move(comp));
+		collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+		collisonComp->m_radius = 30.0f;
+		weapon->AddComponent(std::move(collisonComp));
 
+		weapon->Initialize();
 		m_scene->Add(std::move(weapon));
 	}
 

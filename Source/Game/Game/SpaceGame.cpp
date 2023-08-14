@@ -5,7 +5,8 @@
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-
+#include "Renderer/Text.h"
+#include "Renderer/ModelManager.h"
 
 bool SpaceGame::Initialize()
 {
@@ -65,6 +66,8 @@ void SpaceGame::Update(float dt)
 		//create components
 		//std::unique_ptr<kiko::ModelRenderComponent> comp = std::make_unique<kiko::SpriteComponent>();
 
+		//adding compoents
+
 		auto renderComp = std::make_unique<kiko::SpriteComponent>();
 
 		renderComp->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_2_C_Small.png");
@@ -73,6 +76,10 @@ void SpaceGame::Update(float dt)
 		auto physicComp = std::make_unique<kiko::EnginePhysicComponet>();
 		physicComp->m_damping = 0.9f;
 		player->AddComponent(std::move(physicComp));
+		
+		auto collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+		collisonComp->m_radius = 30.0f;
+		player->AddComponent(std::move(collisonComp));
 
 		m_scene->Add(std::move(player));
 	}
@@ -87,6 +94,14 @@ void SpaceGame::Update(float dt)
 			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::Pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::TwoPi), 3});
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
+
+			auto collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+			collisonComp->m_radius = 30.0f;
+			enemy->AddComponent(std::move(collisonComp));
+
+			
+
+			enemy->Initialize();
 			m_scene->Add(std::move(enemy));
 		}
 		break;

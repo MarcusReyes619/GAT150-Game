@@ -1,12 +1,13 @@
 #pragma once
 #include "Core/Core.h"
+#include "Object.h"
 #include "Renderer/Model.h"
 #include "Framework/Compunts/Component.h"
 #include <memory>
 
 namespace kiko
 {
-	class Actor
+	class Actor : public Object
 	{
 	public:
 		Actor() = default;
@@ -17,6 +18,9 @@ namespace kiko
 			m_transform{ transform },
 			m_model{ model }
 		{}
+
+		virtual bool Initialize()override;
+		virtual void OnDestroy()override;
 
 		virtual void Update(float dt);
 		virtual void Draw(kiko::Renderer& renderer);

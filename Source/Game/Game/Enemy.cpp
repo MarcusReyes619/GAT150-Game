@@ -1,10 +1,25 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "SpaceGame.h"
-#include "Framework/Scene.h"
-#include "Framework/Emitter.h"
+#include"Framework/FrameWork.h"
 #include "Renderer/Renderer.h"
 
+
+
+
+bool Enemy::Initialize() {
+	auto collisionComp = GetComponent<kiko::CollsionComponent>();
+	if (collisionComp) {
+
+		auto renderComp = GetComponent<kiko::RenderComponent>();
+		if (renderComp) {
+			float scale = m_transform.scale;
+			collisionComp->m_radius = GetComponent < kiko::RenderComponent>()->GetRadius() * scale;
+
+		}
+	}
+	return true;
+}
 
 void Enemy::Update(float dt)
 {
