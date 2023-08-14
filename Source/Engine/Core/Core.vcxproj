@@ -146,6 +146,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="Json.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Math\Matrix22.h" />
