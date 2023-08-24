@@ -1,10 +1,15 @@
-#include <map>
-#include <memory>
-#include<string>
 #include "Resources.h"
 
+#include "Framework/Singleton.h"
+#include <map>
+
+#include <memory>
+#include<string>
+
+
+#define GET_RESOURCE(type, filename, ...) kiko::ResourceManger::Instance().Get<type>(filename, __VA_ARGS__)
 namespace kiko {
-	class ResourceManger {
+	class ResourceManger : public Singleton<ResourceManger> {
 	public:
 		template <typename T, typename ... TArgs>
 		res_t<T> Get(const std::string& filename, TArgs ... args);
@@ -27,6 +32,6 @@ namespace kiko {
 
 	}
 
-	extern ResourceManger g_resources;
+	//extern ResourceManger g_resources;
 
 }

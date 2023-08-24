@@ -12,9 +12,10 @@ namespace kiko {
 		// rows[1] = vec2{ 0, 0 }
 
 		Matrix33() = default;
-		Matrix33(const vec3& row1, const vec3& row2, vec3) {
+		Matrix33(const vec3& row1, const vec3& row2, const vec3& row3) {
 			rows[0] = row1;
 			rows[1] = row2;
+			rows[2] = row3;
 		}
 
 		vec3  operator [] (size_t index) const { return rows[index]; }
@@ -37,7 +38,7 @@ namespace kiko {
 
 	inline Matrix33 Matrix33::CreateIdentity() {
 		return
-		{
+		Matrix33{
 			{1,0,0},
 			{0,1,0},
 			{0,0,1}
@@ -76,7 +77,7 @@ namespace kiko {
 		result[2][1] = rows[2][0] * mx[0][1] + rows[2][1] * mx[1][1] + rows[2][2] * mx[2][1];
 		result[2][2] = rows[2][0] * mx[0][2] + rows[2][1] * mx[1][2] + rows[2][2] * mx[2][2];
 
-		return Matrix33();
+		return result;
 	}
 	inline Matrix33 Matrix33::CreateScale(const vec3& scale) {
 		//|sx 0 0|
@@ -123,7 +124,7 @@ namespace kiko {
 		Matrix33 mx = CreateIdentity();
 
 		mx[0][2] = trans.x;
-		mx[1][1] = trans.y;
+		mx[1][2] = trans.y;
 
 
 		return mx;

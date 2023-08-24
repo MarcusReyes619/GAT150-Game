@@ -1,0 +1,42 @@
+{
+	"actors":[
+		{
+			"type": "Actor",
+			"name": "Backround",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "spacebackround.jpg"
+				}
+			]
+		},
+			{
+				"type": "Weapon",
+				"name": "RocketPew",
+				"prototype": true,
+				"Lifespan": 2,
+				"transform": {
+					"position": [ 400, 300 ],
+					"scale": 1,
+					"rotation": 0
+				},
+				"speed": 200,
+				"components": [
+					{
+						"type": "SpriteComponent",
+						"textureName": "RocketPew.png"
+					},
+					{
+						"type": "CircleCollsionComponent"
+					}
+				]
+			}
+		]
+}

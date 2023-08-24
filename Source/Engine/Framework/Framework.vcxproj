@@ -143,23 +143,27 @@
     <ClInclude Include="Compunts\RenderCompunts.h" />
     <ClInclude Include="Compunts\SpriteComponet.h" />
     <ClInclude Include="Emitter.h" />
+    <ClInclude Include="Event\Event.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="FrameWork.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Compunts\CircleCollsionComp.cpp" />
     <ClCompile Include="Compunts\EnginePhyiscComponent.cpp" />
-    <ClCompile Include="Compunts\EnginePhyiscComponent.h" />
     <ClCompile Include="Compunts\ModelRenderCompents.cpp" />
-    <ClCompile Include="Compunts\ModelRenderCompents.h" />
     <ClCompile Include="Compunts\SpriteComponent.cpp" />
     <ClCompile Include="Emitter.cpp" />
+    <ClCompile Include="Event\Event.cpp" />
+    <ClCompile Include="Event\EventManger.cpp" />
+    <ClCompile Include="Event\EventManger.h" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourceManager.h" />
-    <ClCompile Include="ResourcesManger.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

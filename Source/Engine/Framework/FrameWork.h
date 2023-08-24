@@ -19,3 +19,6 @@
 
 #include "ResourceManager.h"
 #include "Resources.h"
+
+#include "Factory.h"
+#include "Event/EventManger.h"

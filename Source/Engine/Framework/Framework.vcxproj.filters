@@ -11,6 +11,9 @@
     <Filter Include="Source\Compunts">
       <UniqueIdentifier>{92a9d25a-1727-42b9-a2eb-448297651b9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{6ac7bbee-4093-4149-8fcb-5e5c687b6a26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -25,19 +28,10 @@
     <ClCompile Include="ResourceManager.h">
       <Filter>Source\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="ResourcesManger.cpp">
-      <Filter>Source\Resource</Filter>
-    </ClCompile>
     <ClCompile Include="Compunts\SpriteComponent.cpp">
       <Filter>Source\Compunts</Filter>
     </ClCompile>
-    <ClCompile Include="Compunts\ModelRenderCompents.h">
-      <Filter>Source\Compunts</Filter>
-    </ClCompile>
     <ClCompile Include="Compunts\ModelRenderCompents.cpp">
-      <Filter>Source\Compunts</Filter>
-    </ClCompile>
-    <ClCompile Include="Compunts\EnginePhyiscComponent.h">
       <Filter>Source\Compunts</Filter>
     </ClCompile>
     <ClCompile Include="Compunts\EnginePhyiscComponent.cpp">
@@ -45,6 +39,18 @@
     </ClCompile>
     <ClCompile Include="Compunts\CircleCollsionComp.cpp">
       <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\Event.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManger.h">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManger.cpp">
+      <Filter>Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +92,15 @@
     </ClInclude>
     <ClInclude Include="Compunts\CircleCollsionComp.h">
       <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

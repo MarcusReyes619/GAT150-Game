@@ -1,1 +1,10 @@
+INFO: CLass registred: Weapon
+INFO: CLass registred: SpriteComponent
+INFO: CLass registred: ModelRenderComponent
+INFO: CLass registred: EnginePhysicComponet
+INFO: CLass registred: CircleCollsionComponent
+INFO: CLass registred: Actor
 INFO: Initialize Engine
+INFO: Prototype class registerdRocketPew
+INFO: Event subscridedAddPoints
+INFO: Event subscridedOnPlayerDead

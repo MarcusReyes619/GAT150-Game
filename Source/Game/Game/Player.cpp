@@ -16,7 +16,7 @@ bool Player::Initialize()
 
 		auto renderComp = GetComponent<kiko::RenderComponent>();
 		if (renderComp) {
-			float scale = m_transform.scale;
+			float scale = transform.scale;
 			collisionComp->m_radius = GetComponent < kiko::RenderComponent>()->GetRadius() * scale;
 
 		}
@@ -34,54 +34,62 @@ void Player::Update(float dt)
 	float rotate = 0;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
-	m_transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
+	transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
 
 	float thrust = 0;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) thrust = 1;
 
-	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(m_transform.rotation);
-	AddForce(forward * m_speed * thrust);
+	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(transform.rotation);
+	
 
 	
 	m_physicsComp->ApplyForces(forward * m_speed * thrust);
 
+	//AddForce(forward * m_speed * thrust);
+
 	
 	//m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
-	m_transform.position.x = kiko::Wrap(m_transform.position.x, (float)kiko::g_renderer.GetWidth());
-	m_transform.position.y = kiko::Wrap(m_transform.position.y, (float)kiko::g_renderer.GetHeight());
+	transform.position.x = kiko::Wrap(transform.position.x, (float)kiko::g_renderer.GetWidth());
+	transform.position.y = kiko::Wrap(transform.position.y, (float)kiko::g_renderer.GetHeight());
 
 	// fire weapon
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) &&
 		!kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 	{
-		// create weapon
-		kiko::Transform transform1{ m_transform.position, m_transform.rotation + kiko::DegreesToRadians(10.0f), 1 };
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform1);
-		weapon->m_tag = "Player";
-		std::unique_ptr<kiko::SpriteComponent> comp = std::make_unique<kiko::SpriteComponent>();
-		comp->m_texture = kiko::g_resources.Get<kiko::Texture>("RocketPew.png", kiko::g_renderer);
-		weapon->AddComponent(std::move(comp));
 
-		auto collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
-		collisonComp->m_radius = 30.0f;
-		weapon->AddComponent(std::move(collisonComp));
-
+		auto weapon = kiko::Factory::Instance().Create<kiko::Weapon>("RocketPew");
+		weapon->transform = { transform.position, transform.rotation + kiko::DegreesToRadians(10.0f), transform.scale };
 		weapon->Initialize();
 		m_scene->Add(std::move(weapon));
 
-		kiko::Transform transform2{ m_transform.position, m_transform.rotation - kiko::DegreesToRadians(10.0f), 1 };
-		weapon = std::make_unique<Weapon>(400.0f, transform2);
-		weapon->m_tag = "Player";
+	//	// create weapon
+	//	kiko::Transform transform1{ transform.position, transform.rotation + kiko::DegreesToRadians(10.0f), 1 };
+	//	std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform1);
+	//	weapon->m_tag = "Player";
+	//	std::unique_ptr<kiko::SpriteComponent> comp = std::make_unique<kiko::SpriteComponent>();
+	//	comp->m_texture = GET_RESOURCE(kiko::Texture, "RocketPew.png", kiko::g_renderer);
+	//	weapon->AddComponent(std::move(comp));
 
-		comp = std::make_unique<kiko::SpriteComponent>();
-		comp->m_texture = kiko::g_resources.Get<kiko::Texture>("RocketPew.png", kiko::g_renderer);;
-		weapon->AddComponent(std::move(comp));
-		collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
-		collisonComp->m_radius = 30.0f;
-		weapon->AddComponent(std::move(collisonComp));
+	//	auto collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+	//	collisonComp->m_radius = 30.0f;
+	//	weapon->AddComponent(std::move(collisonComp));
 
-		weapon->Initialize();
-		m_scene->Add(std::move(weapon));
+	//	weapon->Initialize();
+	//	m_scene->Add(std::move(weapon));
+
+	//	kiko::Transform transform2{ transform.position, transform.rotation - kiko::DegreesToRadians(10.0f), 1 };
+	//	weapon = std::make_unique<Weapon>(400.0f, transform2);
+	//	weapon->m_tag = "Player";
+
+	//	comp = std::make_unique<kiko::SpriteComponent>();
+	//	comp->m_texture = GET_RESOURCE(kiko::Texture, "RocketPew.png", kiko::g_renderer);;
+	//	weapon->AddComponent(std::move(comp));
+	//	collisonComp = std::make_unique<kiko::CircleCollsionComponent>();
+	//	collisonComp->m_radius = 30.0f;
+	//	weapon->AddComponent(std::move(collisonComp));
+
+	//	weapon->Initialize();
+	//	m_scene->Add(std::move(weapon));
 	}
 
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_T)) kiko::g_time.SetTimeScale(0.5f);
@@ -91,11 +99,20 @@ void Player::Update(float dt)
 
 void Player::OnCollision(Actor* other)
 {
-	if (other->m_tag == "Enemy")
+	if (other->tag == "Enemy")
 	{
-		m_game->SetLives(m_game->GetLives() - 1);
-		m_destroyed = true;
-		dynamic_cast<SpaceGame*>(m_game)->SetState(SpaceGame::eState::PlayerDeadStart);
+		
+		destroyed = true;
+		kiko::EventManger::Instance().DispatchEvent("OnPlayerDead", 0);
+
+		/*m_game->SetLives(m_game->GetLives() - 1);
+		dynamic_cast<SpaceGame*>(m_game)->SetState(SpaceGame::eState::PlayerDeadStart);*/
 	}
 }
+
+//void Player::Read(const json_t& value) {
+//	Actor::Read(value);
+//
+//	READ_DATA()
+//}
 
