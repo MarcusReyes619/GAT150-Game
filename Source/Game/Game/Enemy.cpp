@@ -5,7 +5,7 @@
 #include "Renderer/Renderer.h"
 
 
-
+namespace kiko{
 
 bool Enemy::Initialize() {
 	auto collisionComp = GetComponent<kiko::CollsionComponent>();
@@ -48,7 +48,7 @@ void Enemy::Update(float dt)
 
 }
 
-void Enemy::OnCollision(Actor* other)
+void Enemy::OnCollision(Actor * other)
 {
 	if (other->tag == "Player")
 	{
@@ -76,5 +76,6 @@ void Enemy::OnCollision(Actor* other)
 		emitter->lifespan = 0.1f;
 		m_scene->Add(std::move(emitter));
 
+	}
 	}
 }

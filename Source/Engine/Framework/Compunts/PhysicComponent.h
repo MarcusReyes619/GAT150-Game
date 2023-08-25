@@ -8,6 +8,8 @@ namespace kiko {
 		virtual void Update(float dt) override = 0;
 		virtual void ApplyForces(const vec2& force) = 0;
 
+		virtual void SetVelocity(const vec2& velocity) { this->m_vel = velocity; }
+
 	public :
 		vec2 m_vel;
 		vec2 m_acc;
