@@ -4,8 +4,6 @@
 namespace kiko
 {
 	CLASS_DEFINITION(Actor);
-	
-	
 
 	Actor::Actor(const Actor& other)
 	{
@@ -16,7 +14,7 @@ namespace kiko
 		m_scene = other.m_scene;
 		m_game = other.m_game;
 
-		for (auto& component : components) {
+		for (auto& component : other.components) {
 			auto cloneComponent = std::unique_ptr<Component>((Component*)component->Clone().release());
 				AddComponent(std::move(cloneComponent));
 		}
@@ -85,8 +83,10 @@ namespace kiko
 				std::string type;
 				READ_DATA(componentValue, type);
 
-				auto component = CREATE_CLASS_BASE(Component, type)
-					component->Read(componentValue);
+				auto component = CREATE_CLASS_BASE(Component, type);
+				component->Read(componentValue);
+				component->m_owner = this;
+				component->Initialize();
 				AddComponent(std::move(component));
 			}
 		}

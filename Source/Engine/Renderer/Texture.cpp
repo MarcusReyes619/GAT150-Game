@@ -27,7 +27,7 @@ namespace kiko
 			// LOG_WARNING
 			return false;
 		}
-		m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
+ 		m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
 		SDL_FreeSurface(surface);
 		if (!m_texture)
 		{

@@ -52,6 +52,12 @@
     <ClCompile Include="Event\EventManger.cpp">
       <Filter>Event</Filter>
     </ClCompile>
+    <ClCompile Include="Box2DPhysics.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\Box2DCollison.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -101,6 +107,12 @@
     </ClInclude>
     <ClInclude Include="Event\Event.h">
       <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\Box2DPhysics.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\Box2DCollison.h">
+      <Filter>Source\Compunts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,9 @@ namespace kiko {
 	class PhyicsComponent : public Component {
 	public:
 		virtual void Update(float dt) override = 0;
-		virtual void ApplyForces(const vec2& force) = 0;
+		virtual void ApplyForce(const vec2& force) = 0;
+
+		virtual void ApplyTorque(float torque) = 0;
 
 		virtual void SetVelocity(const vec2& velocity) { this->m_vel = velocity; }
 

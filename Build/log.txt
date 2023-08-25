@@ -1,10 +1,16 @@
+INFO: CLass registred: Enemy
+INFO: CLass registred: Player
 INFO: CLass registred: Weapon
 INFO: CLass registred: SpriteComponent
 INFO: CLass registred: ModelRenderComponent
 INFO: CLass registred: EnginePhysicComponet
 INFO: CLass registred: CircleCollsionComponent
+INFO: CLass registred: Box2DCollisionComponent
+INFO: CLass registred: Box2DPhysicsComponent
 INFO: CLass registred: Actor
 INFO: Initialize Engine
+INFO: Prototype class registerdEnemy
+INFO: Prototype class registerdPlayer
 INFO: Prototype class registerdRocketPew
 INFO: Event subscridedAddPoints
 INFO: Event subscridedOnPlayerDead

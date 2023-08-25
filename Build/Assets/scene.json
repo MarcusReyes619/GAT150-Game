@@ -1,10 +1,10 @@
 {
-	"actors":[
+	"actors": [
 		{
 			"type": "Actor",
-			"name": "Backround",
+			"name": "Background",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ 400, 300 ],
 				"scale": 1,
@@ -17,26 +17,86 @@
 				}
 			]
 		},
-			{
-				"type": "Weapon",
-				"name": "RocketPew",
-				"prototype": true,
-				"Lifespan": 2,
-				"transform": {
-					"position": [ 400, 300 ],
-					"scale": 1,
-					"rotation": 0
+		{
+			"type": "Enemy",
+			"name": "Enemy",
+			"prototype": true,
+			"tag": "Enemy",
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"m_speed": 2,
+			"m_turnRate": 0.5,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Ship_1_A_Small.png"
 				},
-				"speed": 200,
-				"components": [
-					{
-						"type": "SpriteComponent",
-						"textureName": "RocketPew.png"
-					},
-					{
-						"type": "CircleCollsionComponent"
-					}
-				]
-			}
-		]
+				{
+					"type": "Box2DPhysicsComponent",
+					"m_damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 32, 32 ]
+				}
+			]
+		},
+		{
+			"type": "Player",
+			"name": "Player",
+			"prototype": true,
+			"tag": "Player",
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"m_speed": 8,
+			"turnRate": 0.5,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Ship_1_A_Small.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"m_damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 32, 32 ]
+				}
+			]
+		},
+		
+		{
+			"type": "Weapon",
+			"name": "RocketPew",
+			"prototype": true,
+			"lifespan": 2,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"speed": 200,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "RocketPew.png"
+				},
+				{
+					"type": "CircleCollsionComponent"
+				}
+			]
+		}
+
+	]
 }

@@ -15,7 +15,8 @@
 
 #include "Compunts/CollsionComponent.h"
 #include "Compunts/CircleCollsionComp.h"
-
+#include "Compunts/Box2DCollison.h"
+#include "Compunts/Box2DPhysics.h"
 
 #include "ResourceManager.h"
 #include "Resources.h"

@@ -7,6 +7,7 @@ namespace kiko {
 		CLASS_DECLARTION(EnginePhysicComponet);
 
 		virtual void Update(float dt) override;
-		virtual void ApplyForces(const vec2& force)override;
+		virtual void ApplyForce(const vec2& force)override;
+		virtual void ApplyTorque(float torque) override;
 	};
 }

@@ -96,41 +96,9 @@ union Data {
 
 };
 
-int main(int argc, char* argv[])
-{
-	Data data;
-	data.b  = true;
-	cout << data.b << endl;
 
-	void(*func_ptr)(int) = &print;
-	func_ptr(5);
-
-
-	int(*op_ptr)(int, int);
-	op_ptr = sub;
-
-
-	cout << op_ptr(4, 4) << endl;
-
-	std::function<int(int, int)>op;
-	//op = add;
-	//cout << op(1, 2) << endl;
-
-	A a;
-	op = std::bind(&A::add, &a, std::placeholders::_1, std::placeholders::_2);
-	cout << op(6, 6) << endl;
-
-
-	//MAIN CODE
-
-
-	INFO_LOG("Initialize Engine");
-
-	kiko::MemoryTracker::Initialize();
-	kiko::seedRandom((unsigned int)time(nullptr));
-	kiko::setFilePath("assets");
-
-	/*rapidjson::Document document;
+//JOSON ASSIMENT
+/*rapidjson::Document document;
 	kiko::Json::Load("json.txt", document);
 	int i1;
 	kiko::Json::Read(document, "integer1", i1);
@@ -143,7 +111,7 @@ int main(int argc, char* argv[])
 	kiko::Json::Read(document,"string",str);
 		std::cout << str << std::endl;
 	bool b;
-	kiko::Json::Read(document, "boolean", b);		
+	kiko::Json::Read(document, "boolean", b);
 	std::cout << b << std::endl;
 	float f;
 	kiko::Json::Read(document, "float", f);
@@ -154,6 +122,44 @@ int main(int argc, char* argv[])
 
 		std::cout << v2 << std::endl;*/
 
+
+int main(int argc, char* argv[])
+{
+	//Data data;
+	//data.b  = true;
+	//cout << data.b << endl;
+
+	//void(*func_ptr)(int) = &print;
+	//func_ptr(5);
+
+
+	//int(*op_ptr)(int, int);
+	//op_ptr = sub;
+
+
+	//cout << op_ptr(4, 4) << endl;
+
+	//std::function<int(int, int)>op;
+	////op = add;
+	////cout << op(1, 2) << endl;
+
+	//A a;
+	//op = std::bind(&A::add, &a, std::placeholders::_1, std::placeholders::_2);
+	//cout << op(6, 6) << endl;
+
+
+	//MAIN CODE
+
+	
+
+
+	INFO_LOG("Initialize Engine");
+
+	kiko::MemoryTracker::Initialize();
+	kiko::seedRandom((unsigned int)time(nullptr));
+	kiko::setFilePath("assets");
+
+	
 
 	// initialize engine
 	kiko::g_renderer.Initialize();
@@ -191,6 +197,7 @@ int main(int argc, char* argv[])
 			quit = true;
 		}
 		kiko::g_particleSystem.Update(kiko::g_time.GetDeltaTime());
+		kiko::PhysicsSystem::Instance().Update(kiko::g_time.GetDeltaTime());
 
 		// update game
 		game->Update(kiko::g_time.GetDeltaTime());
