@@ -38,7 +38,7 @@ namespace kiko {
 		float rotate = 0;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
-		//transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
+		//transform.rotation += rotate * turnRate * kiko::g_time.GetDeltaTime();
 		m_physicsComp->ApplyTorque(rotate * turnRate);
 
 		float thrust = 0;
@@ -62,10 +62,16 @@ namespace kiko {
 			!kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 		{
 
-			auto weapon = kiko::Factory::Instance().Create<kiko::Weapon>("RocketPew");
-			weapon->transform = { transform.position, transform.rotation + kiko::DegreesToRadians(10.0f), transform.scale };
+			auto weapon = INSTIANTIATE(Weapon, "RocketPew");
+			weapon->transform = { transform.position + forward * 30, transform.rotation + kiko::DegreesToRadians(10.0f), 1 };
 			weapon->Initialize();
 			m_scene->Add(std::move(weapon));
+
+		/*	auto weapon = kiko::Factory::Instance().Create<kiko::Weapon>("RocketPew");
+			weapon->transform = { transform.position, transform.rotation + kiko::DegreesToRadians(10.0f), transform.scale };
+			weapon->Initialize();
+			m_scene->Add(std::move(weapon));*/
+
 
 			//	// create weapon
 			//	kiko::Transform transform1{ transform.position, transform.rotation + kiko::DegreesToRadians(10.0f), 1 };
@@ -102,7 +108,7 @@ namespace kiko {
 
 	}
 
-	void Player::OnCollision(Actor* other)
+	void Player::OnCollisionEnter(Actor* other)
 	{
 		if (other->tag == "Enemy")
 		{

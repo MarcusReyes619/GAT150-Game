@@ -13,3 +13,4 @@
 #include "Vector2.h"
 #include "Transform.h"
 #include "MathUtils.h"
+#include "Rect.h"

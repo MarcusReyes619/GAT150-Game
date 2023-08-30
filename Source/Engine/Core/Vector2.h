@@ -36,7 +36,7 @@ namespace kiko
 		Vector2& operator *= (const Vector2& v) { x *= v.x; y *= v.y; return *this; }
 
 		float LengthSqr() const { return (x * x) + (y * y); }
-		float Length() const { return sqrt(LengthSqr()); }
+		float Length() const { return static_cast<float>(std::sqrt(LengthSqr())); }
 
 		inline float DistanceSqr(const Vector2& v) const { return (v - *this).LengthSqr(); }
 		inline float Distance(const Vector2& v) const { return (v - *this).Length(); }

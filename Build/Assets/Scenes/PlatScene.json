@@ -1,0 +1,72 @@
+{
+    "actors": [
+        {
+            "type": "Actor",
+            "name": "Background",
+            "tag": "bg",
+            "persistent": true,
+            "transform": {
+                "position": [ 400, 300 ],
+                "scale": 1,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "SpriteComponent",
+                    "textureName": "Textures/backgroundPlatFrom.png"
+                    
+                }
+            ]
+        },
+        {
+            "type": "Actor",
+            "name": "coin",
+            "persistent": true,
+            "transform": {
+                "position": [ 400, 300 ],
+                "scale": 1,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "AnimationComponet",
+                    "defaultSequence": "idle",
+                    "sequences": [
+                        {
+                            "name": "idle",
+                            "fps": 12,
+                            "numColumns": 8,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 8,
+                            "textureName": "Textures/coin.png"
+                        }
+                    ]
+
+                }
+            ]
+        },
+
+        {
+            "type": "Actor",
+            "name": "Title",
+            "persistent": true,
+            "transform": {
+                "position": [ 200, 300 ],
+                "scale": 2,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "TextRenderComponent",
+                    "fontName": "ArcadeClassic.ttf",
+                    "fontSize": 24,
+                    "text": "Platform",
+                    "color": [ 1, 0, 0, 1 ]
+                }
+            ]
+        }
+    ]
+      
+
+}

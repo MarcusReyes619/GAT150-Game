@@ -59,15 +59,15 @@ namespace kiko {
 	inline Matrix22 Matrix22::CreateScale(const vec2& scale) {
 		return
 		{
-			{scale.x,0.0f},
-			{0.0f,scale.y}
+			vec2{scale.x,0.0f},
+			vec2{0.0f,scale.y}
 		};
 	}
 	inline Matrix22 Matrix22::CreateScale(float scale) {
 		return
 		{
-			{scale,0.0f},
-			{0.0f,scale}
+			vec2{scale,0.0f},
+			vec2{0.0f,scale}
 		};
 
 	}

@@ -1,6 +1,7 @@
 #include "Box2DCollison.h"
 #include "Box2DPhysics.h"
 #include "Framework/Actor.h"
+#include "SpriteComponet.h"
  
 namespace kiko
 {
@@ -8,8 +9,18 @@ namespace kiko
 
 		bool Box2DCollisionComponent::Initialize() {
 		auto component = m_owner->GetComponent<Box2DPhysicsComponent>();
-		if (component)
-		{
+		if (component) {
+
+			if (data.size.x == 0 && data.size.y == 0) {
+				auto spriteComp = m_owner->GetComponent<SpriteComponent>();
+
+				if (spriteComp) {
+
+					data.size = vec2{ spriteComp->source.w, spriteComp->source.h };
+
+				}
+			}
+
 			data.size = data.size * scaleOffset * m_owner->transform.scale;
 
 			if (component->m_body->GetType() == b2_staticBody)

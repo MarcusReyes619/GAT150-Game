@@ -116,10 +116,14 @@ void SpaceGame::Update(float dt)
 			/*std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(20.0f,kiko::Pi,kiko::Transform{{400,300},0,3});
 			enemy->tag = "Enemy";
 			enemy->m_game = this;*/
+
+
 			auto enemy = INSTIANTIATE(Enemy, "Enemy");
 			enemy->transform = kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::TwoPi), 1 };
 			enemy->Initialize();
 			m_scene->Add(std::move(enemy));
+
+
 			/*auto renderComp = std::make_unique<kiko::SpriteComponent>();
 
 			renderComp->m_texture = GET_RESOURCE(kiko::Texture, "Ship_2_C_Small.png");

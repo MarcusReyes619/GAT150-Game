@@ -87,7 +87,7 @@ namespace kiko
 		mat3 mx = transform.GetMatrix();
 
 		vec2 postion = mx.GetTranslation();
-		vec2 size = tex->GetSize() *mx.GetScale();
+		vec2 size = tex->GetSize(); mx.GetScale();
 		SDL_Rect dest;
 
 		dest.x = (int)(postion.x - (size.x * 0.5f));
@@ -97,6 +97,26 @@ namespace kiko
 
 		// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
 		SDL_RenderCopyEx(m_renderer, tex->m_texture, nullptr, &dest, RadiansToDegrees(mx.GetRotation()), nullptr, SDL_FLIP_NONE);
+
+	}
+	void Renderer::DrawTexture(Texture* tex, const Rect souce, const Transform& transform){
+		mat3 mx = transform.GetMatrix();
+
+
+		vec2 postion = mx.GetTranslation();
+		vec2 size = vec2{ souce.w, souce.h} * mx.GetScale();
+		SDL_Rect dest;
+
+		dest.x = (int)(postion.x - (size.x * 0.5f));
+		dest.y = (int)(postion.y - (size.y * 0.5f));
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+
+		//SDL_Point center{ (int)(size.x * origin.x), (int)(size.y * origin.y) };
+
+		// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
+		SDL_RenderCopyEx(m_renderer, tex->m_texture, (SDL_Rect*)(&souce), &dest, RadiansToDegrees(mx.GetRotation()), nullptr, SDL_FLIP_NONE);
+
 
 	}
 }

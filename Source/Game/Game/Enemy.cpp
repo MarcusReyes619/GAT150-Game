@@ -60,7 +60,7 @@ namespace kiko {
 
 	}
 
-	void Enemy::OnCollision(Actor* other)
+	void Enemy::OnCollisionEnter(Actor* other)
 	{
 		if (other->tag == "Player")
 		{
@@ -85,8 +85,8 @@ namespace kiko {
 
 			kiko::Transform transform{ this->transform.position, 0, 1 };
 			auto emitter = std::make_unique<kiko::Emitter>(transform, data);
-			emitter->lifespan = 0.1f;
-			m_scene->Add(std::move(emitter));
+			emitter->lifespan = 1.0f;
+ 			if (m_scene) m_scene->Add(std::move(emitter));
 
 		}
 	}

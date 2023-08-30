@@ -16,7 +16,8 @@ namespace kiko {
 		void OnDestroy() override;
 
 		void Update(float dt) override;
-		void OnCollision(Actor* other) override;
+
+		void OnCollisionEnter(Actor* other) override;
 
 
 

@@ -45,14 +45,14 @@ namespace kiko
 	{
 		for (auto& actor : m_actors) {
 
-			if(actor->active) actor->Draw(renderer);
+			if (actor->active) actor->Draw(renderer);
 		}
 	}
 
 	void Scene::Add(std::unique_ptr<Actor> actor)
 	{
 		if (!actor) return;
- 		actor->m_scene = this;
+		actor->m_scene = this;
 		m_actors.push_back(std::move(actor));
 	}
 
@@ -61,7 +61,7 @@ namespace kiko
 		auto iter = m_actors.begin();
 		while (iter != m_actors.end())
 		{
-			
+
 			(force || !(*iter)->persistent) ? iter = m_actors.erase(iter) : iter++;
 		}
 		//m_actors.clear();
@@ -92,17 +92,21 @@ namespace kiko
 				READ_DATA(actorValue, type);
 
 				auto actor = CREATE_CLASS_BASE(Actor, type);
-					actor->Read(actorValue);
 
-					if (actor->prototype) {
-						std::string name = actor->name;
-						Factory::Instance().RegisterPrototype(name, std::move(actor));
-					}
-					else {
+				if (!actor) return;
 
-					}
+				actor->Read(actorValue);
 
-				Add(std::move(actor));
+				if (actor->prototype) {
+					std::string name = actor->name;
+					Factory::Instance().RegisterPrototype(name, std::move(actor));
+				}
+				else {
+
+					Add(std::move(actor));
+
+				}
+
 			}
 		}
 	}

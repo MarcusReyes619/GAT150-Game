@@ -23,7 +23,7 @@
 			"prototype": true,
 			"tag": "Enemy",
 			"transform": {
-				"position": [ 400, 300 ],
+				"position": [ 0, 0 ],
 				"scale": 1,
 				"rotation": 0
 			},
@@ -32,7 +32,7 @@
 			"components": [
 				{
 					"type": "SpriteComponent",
-					"textureName": "Ship_1_A_Small.png"
+					"textureName": "MapplesShip.png"
 				},
 				{
 					"type": "Box2DPhysicsComponent",
@@ -43,6 +43,7 @@
 				{
 					"type": "Box2DCollisionComponent",
 					"size": [ 32, 32 ]
+					
 				}
 			]
 		},
@@ -52,7 +53,7 @@
 			"prototype": true,
 			"tag": "Player",
 			"transform": {
-				"position": [ 400, 300 ],
+				"position": [ 400, 100 ],
 				"scale": 1,
 				"rotation": 0
 			},
@@ -61,7 +62,7 @@
 			"components": [
 				{
 					"type": "SpriteComponent",
-					"textureName": "Ship_1_A_Small.png"
+					"textureName": "MapplesShip.png"
 				},
 				{
 					"type": "Box2DPhysicsComponent",
@@ -72,6 +73,7 @@
 				{
 					"type": "Box2DCollisionComponent",
 					"size": [ 32, 32 ]
+				
 				}
 			]
 		},
@@ -82,18 +84,27 @@
 			"prototype": true,
 			"lifespan": 2,
 			"transform": {
-				"position": [ 400, 300 ],
+				"position": [ 200, 700],
 				"scale": 1,
 				"rotation": 0
 			},
-			"speed": 200,
+			"speed": 2,
 			"components": [
 				{
 					"type": "SpriteComponent",
 					"textureName": "RocketPew.png"
 				},
 				{
-					"type": "CircleCollsionComponent"
+					"type": "Box2DPhysicsComponent",
+					"m_damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 32, 32 ],
+					"isTrigger": true,
+					"constrainAngle": true
 				}
 			]
 		}

@@ -74,7 +74,10 @@ namespace kiko
 		READ_DATA(value, prototype);
 		READ_DATA(value, active);
 
-		if (HAS_DATA(value, transform)) transform.Read(value);
+		if (HAS_DATA(value, transform))
+		{
+			transform.Read(GET_DATA(value, transform));
+		}
 
 		if (HAS_DATA(value, components) && GET_DATA(value, components).IsArray())
 		{
@@ -86,7 +89,9 @@ namespace kiko
 				auto component = CREATE_CLASS_BASE(Component, type);
 				component->Read(componentValue);
 				component->m_owner = this;
-				component->Initialize();
+
+
+				if (!prototype) component->Initialize();
 				AddComponent(std::move(component));
 			}
 		}

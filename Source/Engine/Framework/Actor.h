@@ -25,6 +25,10 @@ namespace kiko
 		{}
 		Actor(const Actor& other);
 
+		virtual ~Actor() {
+			OnDestroy();
+		}
+
 		virtual bool Initialize()override;
 		virtual void OnDestroy()override;
 
@@ -35,8 +39,9 @@ namespace kiko
 		template<typename T>
 		T* GetComponent();
 
-		float GetRadius() { return (m_model) ? m_model->GetRadius() * transform.scale : -10000; }
-		virtual void OnCollision(Actor* other) {}
+		//float GetRadius() { return (m_model) ? m_model->GetRadius() * transform.scale : -10000; }
+		virtual void OnCollisionEnter(Actor* other) {}
+		virtual void OnCollisionExit(Actor* other) {}
 
 		void AddForce(const vec2& force) { m_velocity += force; }
 		void SetDamping(float damping) { m_damping = damping; }

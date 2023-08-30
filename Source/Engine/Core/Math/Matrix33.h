@@ -39,9 +39,9 @@ namespace kiko {
 	inline Matrix33 Matrix33::CreateIdentity() {
 		return
 		Matrix33{
-			{1,0,0},
-			{0,1,0},
-			{0,0,1}
+			vec3{1,0,0},
+			vec3{0,1,0},
+			vec3{0,0,1}
 		};
 	}
 	
@@ -52,7 +52,7 @@ namespace kiko {
 		//|d h i| |1|
 		vec2 result;
 		result.x = rows[0][0] * v.x + rows[0][1] * v.y + rows[0][2];
-		result.y = rows[1][0] * v.x + rows[1][1] * v.y +rows[1][2];
+		result.y = rows[1][0] * v.x + rows[1][1] * v.y + rows[1][2];
 
 		return result;
 	}
@@ -86,6 +86,7 @@ namespace kiko {
 		Matrix33 mx = CreateIdentity();		
 		mx[0][0] = scale.x;
 		mx[1][1] = scale.y;
+		mx[2][2] = 1;
 
 		return mx;
 			
@@ -95,6 +96,7 @@ namespace kiko {
 		//|sx 0 0|
 		//|0 sy 0|
 		//|0 0 1|
+
 		Matrix33 mx = CreateIdentity();
 
 		mx[0][0] = scale;
@@ -108,7 +110,7 @@ namespace kiko {
 		//|0 0 1|
 		Matrix33 mx = CreateIdentity();
 		float c = cos(radians);
-		float s = sin(radians);
+		float s = sin(radians);	
 
 		mx[0][0] = c; mx[0][1] = -s;
 		mx[1][0] = s; mx[1][1] = c;
@@ -127,6 +129,7 @@ namespace kiko {
 		mx[1][2] = trans.y;
 
 
+
 		return mx;
 	}
 	inline vec2 Matrix33::GetTranslation() const{
@@ -134,12 +137,20 @@ namespace kiko {
 		return{ rows[0][2], rows[1][2] };
 	}
 	inline float Matrix33::GetRotation() const {
+
 		return std::atan2(rows[1][0], rows[0][0]);
+
 	}
-	inline vec2 Matrix33::GetScale() const{
-		vec2 x = (rows[0][0], rows[0][1]);
-	vec2 y = (rows[1][0], rows[1][1]);
-	return (x.Length(), y.Length());
+	inline vec2 Matrix33::GetScale() const {
+		// vx = cos + -sin
+		// vy = sin +  cos
+		// x  = vx length
+		// y  = vy length
+
+		vec2 x = {rows[0][0], rows[0][1]};
+		vec2 y = { rows[1][0], rows[1][1] };
+
+		return { x.Length(), y.Length() };
 	}
 
 	using mat3 = Matrix33;

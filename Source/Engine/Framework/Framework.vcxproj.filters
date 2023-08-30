@@ -58,6 +58,15 @@
     <ClCompile Include="Compunts\Box2DCollison.cpp">
       <Filter>Source\Compunts</Filter>
     </ClCompile>
+    <ClCompile Include="TextRenderComponent.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
+    <ClCompile Include="Compunts\TitemapComponet.cpp">
+      <Filter>Source\Compunts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -112,6 +121,15 @@
       <Filter>Source\Compunts</Filter>
     </ClInclude>
     <ClInclude Include="Compunts\Box2DCollison.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRenderComponent.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\AnimationComponent.h">
+      <Filter>Source\Compunts</Filter>
+    </ClInclude>
+    <ClInclude Include="Compunts\TitlemapComponent.h">
       <Filter>Source\Compunts</Filter>
     </ClInclude>
   </ItemGroup>

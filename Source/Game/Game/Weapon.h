@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/Actor.h"
-#include "Renderer/Model.h"
+//#include "Renderer/Model.h"
+#include "Framework/Compunts/PhysicComponent.h"
 
 
 namespace kiko {
@@ -14,8 +15,17 @@ namespace kiko {
 
 		bool Initialize()override;
 		void Update(float dt)override;
+		void OnCollisionEnter(Actor* other) override;
 
-		//void Read(const json_t& value);
+	private:
+		float speed = 0;
+		
+		
+		PhyicsComponent* m_physicComp = nullptr;
+
+	};
+
+	//void Read(const json_t& value);
 
 		/*
 
@@ -26,10 +36,4 @@ namespace kiko {
 			m_lifespan = 2.0f;
 		}
 		*/
-		void OnCollision(Actor* other) override;
-
-	private:
-		float speed = 0;
-
-	};
 }
