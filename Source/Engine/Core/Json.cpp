@@ -58,6 +58,7 @@ namespace kiko
 
 	bool Json::Read(const rapidjson::Value& value, const std::string& name, bool& data, bool require)
 	{
+
 			if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsBool())
 			{
 				if (require) ERROR_LOG("Cannot read required json data: " << name.c_str());

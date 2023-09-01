@@ -21,11 +21,13 @@ namespace kiko {
 
 	void Hammer::Update(float dt) {
 
+		Actor::Update(dt);
+
 	}
 
 	void Hammer::OnCollisionEnter(Actor* other) {
 
-		if (other->tag == "Player") {
+		if (other->tag == "Player" || other->tag == "HammerTime") {
 			//Actor::OnDestroy();
 			destroyed = true;
 			std::cout << "REE";

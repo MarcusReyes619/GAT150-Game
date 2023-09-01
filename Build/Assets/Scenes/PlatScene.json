@@ -84,7 +84,7 @@
             "tag": "Player",
             "persistent": true,
             "m_speed": 15,
-            "jump": 8,
+            "jump": 10,
             "transform": {
                 "position": [ 300, 500 ],
                 "scale": 1,
@@ -112,6 +112,17 @@
                             "startFrame": 1,
                             "endFrame": 12,
                             "textureName": "Textures/run cycle 48x48.png"
+                        },
+                        {
+                            "name": "HammerMan",
+                            "fps": 12,
+                            "numColumns": 24,
+                            "numRows": 1,
+                            "startFrame": 18,
+                            "endFrame": 24,
+                            "textureName": "Textures/HammerMan.png"
+                   
+
                         }
 
 
@@ -165,7 +176,93 @@
                     "size": [ 32, 32 ]
                 }
             ]
+        },
+        {
+            "type": "BadBaral",
+            "name": "BadBaral",
+            "tag": "BadBaral",
+            "persistent": true,
+            "transform": {
+                "position": [ 300, 200 ],
+                "scale": 1,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "AnimationComponet",
+                    "defaultSequenceName": "idle",
+                    "sequences": [
+                        {
+                            "name": "idle",
+                            "fps": 12,
+                            "numColumns": 4,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 4,
+                            "textureName": "Textures/gpDK (1).png"
+                        }
+                    ]
+
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+
+                    "m_damping": 0.98,
+                    "angularDamping": 2,
+                    "gravityScale": 1,
+                    "constrainAngle": true
+                },
+                {
+                    "type": "Box2DCollisionComponent",
+                    "size": [ 32, 32 ]
+
+                }
+            ]
+        },
+        {
+            "type": "BigBad",
+            "name": "BigBad",
+            "tag": "BigBad",
+            "prototype": true,
+            "transform": {
+                "position": [ 700, 0 ],
+                "scale": 0.5,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "AnimationComponet",
+                    "defaultSequenceName": "idle",
+                    "sequences": [
+                        {
+                            "name": "idle",
+                            "fps": 12,
+                            "numColumns": 8,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 4,
+                            "textureName": "Textures/IdleEvil.png"
+                        }
+                    ]
+
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+
+                    "m_damping": 0.98,
+                    "angularDamping": 2,
+                    "gravityScale": 1,
+                    "constrainAngle": true
+                },
+                {
+                    "type": "Box2DCollisionComponent",
+                    "size": [ 32, 32 ]
+
+                }
+            ]
         }
+
+
 
 
     ]

@@ -1,5 +1,5 @@
 #include "PlatGame.h"
-
+#include "badBaral.h"
 #include "Framework/FrameWork.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -36,41 +36,55 @@ void PlatGame::Shutdown()
 
 void PlatGame::Update(float dt)
 {
-	switch (m_state)
+
+	m_gameTimer += dt;
+	m_spawnTimer += dt;
+	if (m_spawnTimer >= m_spawnTime)
 	{
-	case PlatGame::eState::Title:
-		/*if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
-		{
-			m_state = eState::StartGame;
-			m_scene->GetActorByName("Background");
-		}*/
-		break;
+		m_spawnTimer = 0;
 
-	case PlatGame::eState::StartGame:
-		
-		break;
-
-	case PlatGame::eState::StartLevel:
-
-		break;
-	case PlatGame::eState::Game:
-		
-
-		break;
-
-	case eState::PlayerDeadStart:
-	
-		break;
-
-	case PlatGame::eState::PlayerDead:
-		
-		break;
-	case PlatGame::eState::GameOver:
-		
-		break;
-	default:
-		break;
+		auto barl = INSTIANTIATE(BadBaral, "BadBaral");
+		barl->transform = kiko::Transform{ {500,0 }, kiko::randomf(kiko::TwoPi), 1 };
+		barl->Initialize();
+		m_scene->Add(std::move(barl));
 	}
+	
+
+	//switch (m_state)
+	//{
+	//case PlatGame::eState::Title:
+	//	/*if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
+	//	{
+	//		m_state = eState::StartGame;
+	//		m_scene->GetActorByName("Background");
+	//	}*/
+	//	break;
+
+	//case PlatGame::eState::StartGame:
+	//	
+	//	break;
+
+	//case PlatGame::eState::StartLevel:
+
+	//	break;
+	//case PlatGame::eState::Game:
+	//	
+
+	//	break;
+
+	//case eState::PlayerDeadStart:
+	//
+	//	break;
+
+	//case PlatGame::eState::PlayerDead:
+	//	
+	//	break;
+	//case PlatGame::eState::GameOver:
+	//	
+	//	break;
+	//default:
+	//	break;
+	//}
 
 	m_scene->Update(dt);
 }

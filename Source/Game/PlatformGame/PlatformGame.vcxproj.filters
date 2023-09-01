@@ -30,6 +30,9 @@
     <ClCompile Include="badBaral.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="BigBad.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlatGame.h">
@@ -42,6 +45,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Hammer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="BigBad.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,6 +21,9 @@ namespace kiko {
 		float maxSpeed = 0;
 		float jump = 0;
 		int groundCount = 0;
+		float timer = 10;
+		float timeSpent = -1;
+
 		
 		class PhyicsComponent* m_physicsComp = nullptr;
 		class AnimationComponet* m_spriteAnimationComp = nullptr;

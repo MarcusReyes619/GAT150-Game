@@ -11,7 +11,7 @@ namespace kiko {
 
 	bool Player::Initialize()
 	{
-		Actor::Initialize();
+		Actor::Initialize();   
 
 
 		m_physicsComp = GetComponent<kiko::PhyicsComponent>();
@@ -23,6 +23,15 @@ namespace kiko {
 	{
 		Actor::Update(dt);
 
+		if (timeSpent != -1.0f) {
+			timeSpent -= dt;
+			
+			if (timeSpent <= 0) {
+				this->tag = "Player";
+			}
+
+		}
+		
 		// movement
 		float dir = 0;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
@@ -48,13 +57,20 @@ namespace kiko {
 		//animation
 		vec2 vel = m_physicsComp->m_vel;
 		//check if movin movin u
-		if (std::fabs(vel.x) > 0.2f) {
-			m_spriteAnimationComp->flipH = (dir < 0);
-			m_spriteAnimationComp->SetSequence("Run");
-		}
+		
+m_spriteAnimationComp->flipH = (dir < 0);
 
-		else {
-			m_spriteAnimationComp->SetSequence("idle");
+		if (tag != "HammerTime") {
+
+			if (std::fabs(vel.x) > 0.2f) {
+				
+				m_spriteAnimationComp->SetSequence("Run");
+			}
+
+			else {
+				m_spriteAnimationComp->SetSequence("idle");
+			}
+
 		}
 		
 		//Hammer Time
@@ -86,7 +102,12 @@ namespace kiko {
 		//Collid with Hammer
 
 		if (other->tag == "Hammer") {
-			
+			timeSpent = timer;
+
+			this->tag = "HammerTime";
+
+			m_spriteAnimationComp->SetSequence("HammerMan");
+			std::cout << "ree";
 		}
 
 

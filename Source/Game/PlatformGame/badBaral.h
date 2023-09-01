@@ -17,5 +17,9 @@ namespace kiko {
 		void OnCollisionEnter(Actor* other) override;
 
 
+		class PhyicsComponent* m_physicsComp = nullptr;
+		//class AnimationComponet* m_spriteAnimationComp = nullptr;
+		float dir = 0;
+		float speed = 5;
 	};
 }

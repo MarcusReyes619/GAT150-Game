@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="badBaral.cpp" />
+    <ClCompile Include="BigBad.cpp" />
     <ClCompile Include="Hammer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlatGame.cpp" />
@@ -162,6 +163,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BigBad.h" />
     <ClInclude Include="Hammer.h" />
     <ClInclude Include="badBaral.h" />
     <ClInclude Include="PlatGame.h" />

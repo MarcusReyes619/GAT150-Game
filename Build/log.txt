@@ -1,3 +1,5 @@
+INFO: CLass registred: BadBaral
+INFO: CLass registred: BigBad
 INFO: CLass registred: Hammer
 INFO: CLass registred: Player
 INFO: CLass registred: TextRenderComponent
@@ -11,6 +13,7 @@ INFO: CLass registred: Box2DPhysicsComponent
 INFO: CLass registred: AnimationComponet
 INFO: CLass registred: Actor
 INFO: Initialize Engine
+INFO: Prototype class registerdBigBad
 INFO: Prototype class registerdtile01
 INFO: Prototype class registerdtile02
 INFO: Event subscridedAddPoints
