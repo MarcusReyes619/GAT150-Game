@@ -90,8 +90,6 @@ namespace kiko
 				component->Read(componentValue);
 				component->m_owner = this;
 
-
-				if (!prototype) component->Initialize();
 				AddComponent(std::move(component));
 			}
 		}

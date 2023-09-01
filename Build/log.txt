@@ -1,3 +1,5 @@
+INFO: CLass registred: Hammer
+INFO: CLass registred: Player
 INFO: CLass registred: TextRenderComponent
 INFO: CLass registred: TilemapComponent
 INFO: CLass registred: SpriteComponent
@@ -9,5 +11,7 @@ INFO: CLass registred: Box2DPhysicsComponent
 INFO: CLass registred: AnimationComponet
 INFO: CLass registred: Actor
 INFO: Initialize Engine
+INFO: Prototype class registerdtile01
+INFO: Prototype class registerdtile02
 INFO: Event subscridedAddPoints
 INFO: Event subscridedOnPlayerDead

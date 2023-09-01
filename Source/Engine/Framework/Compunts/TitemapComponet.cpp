@@ -38,8 +38,8 @@ namespace kiko
         READ_DATA(value, numRows);
         READ_DATA(value, size);
 
-       /* READ_DATA(value, tileNames);
-        READ_DATA(value, tiles);*/
+        READ_DATA(value, tileNames);
+        READ_DATA(value, tiles);
     }
 
 }

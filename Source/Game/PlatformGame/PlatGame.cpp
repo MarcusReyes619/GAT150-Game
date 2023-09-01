@@ -19,7 +19,7 @@ bool PlatGame::Initialize()
 	// create scene
 	m_scene = std::make_unique<kiko::Scene>();
 	m_scene->Load("Scenes/PlatScene.json");
-	//m_scene->Load("scenes/tilemap.json);
+	m_scene->Load("scenes/tilemap.json");
 	m_scene->Initialize();
 
 	//m_scene->GetActorByName("Title")->active = false;

@@ -14,9 +14,12 @@ namespace kiko {
 	bool AnimationComponet::Initialize() {
 
 		SpriteComponent::Initialize();
-
+		
 		SetSequence(defaultSequenceName);
-		UpdateSource();
+		if (source.w == 0 && source.h == 0) {
+			UpdateSource();
+
+		}
 		return true;
 	}
 
@@ -33,7 +36,7 @@ namespace kiko {
 		}
 		UpdateSource();
 	}
-	void AnimationComponet::SetSequence(const std::string name) {
+	void AnimationComponet::SetSequence(const std::string name, bool update) {
 
 		//prevent set sequence again
 		if (m_sequence && m_sequence->name == name) return;
@@ -49,6 +52,8 @@ namespace kiko {
 			//reset frame info
 			frame = m_sequence->startFrame;
 			frameTimer = 1.0f / m_sequence->fps;
+
+			if(update)UpdateSource();
 		}
 
 	}

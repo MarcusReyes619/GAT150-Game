@@ -37,6 +37,7 @@ namespace kiko
 		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
 		void DrawTexture(class Texture* tex, const Transform& transform);
 		void DrawTexture(class Texture* tex, const Rect souce, const Transform& transform);
+		void DrawTexture(class Texture* tex, const Rect souce, const Transform& transform,const vec2& origin, bool flipH);
 
 		friend class Text;
 		friend class Texture;

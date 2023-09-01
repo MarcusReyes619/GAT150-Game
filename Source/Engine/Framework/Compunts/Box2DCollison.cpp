@@ -8,6 +8,8 @@ namespace kiko
 	CLASS_DEFINITION(Box2DCollisionComponent)
 
 		bool Box2DCollisionComponent::Initialize() {
+
+
 		auto component = m_owner->GetComponent<Box2DPhysicsComponent>();
 		if (component) {
 
@@ -19,6 +21,7 @@ namespace kiko
 					data.size = vec2{ spriteComp->source.w, spriteComp->source.h };
 
 				}
+				//data.offset = spriteComp->origin - vec2{0.5f, 0.5f};
 			}
 
 			data.size = data.size * scaleOffset * m_owner->transform.scale;

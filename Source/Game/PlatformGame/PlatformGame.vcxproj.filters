@@ -24,6 +24,12 @@
     <ClCompile Include="PlatPlayer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Hammer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="badBaral.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlatGame.h">
@@ -32,10 +38,21 @@
     <ClInclude Include="PlatPlayer.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="badBaral.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Hammer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\Build\Assets\Scenes\PlatScene.json">
       <Filter>Resource</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Build\Assets\Scenes\tilemap.json">
+      <Filter>Resource</Filter>
+    </None>
   </ItemGroup>
 </Project>

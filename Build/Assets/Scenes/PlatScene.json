@@ -13,8 +13,8 @@
             "components": [
                 {
                     "type": "SpriteComponent",
-                    "textureName": "Textures/backgroundPlatFrom.png"
-                    
+                    "textureName": "Textures/darkblueback.jpg"
+
                 }
             ]
         },
@@ -43,8 +43,20 @@
                         }
                     ]
 
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+                    "m_damping": 0.98,
+                    "angularDamping": 2,
+                    "gravityScale": 1,
+                    "constrainAngle": true
+                },
+                {
+                    "type": "Box2DCollisionComponent"
+
                 }
             ]
+
         },
 
         {
@@ -65,7 +77,97 @@
                     "color": [ 1, 0, 0, 1 ]
                 }
             ]
+        },
+        {
+            "type": "Player",
+            "name": "Player",
+            "tag": "Player",
+            "persistent": true,
+            "m_speed": 15,
+            "jump": 8,
+            "transform": {
+                "position": [ 300, 500 ],
+                "scale": 1,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "AnimationComponet",
+                    "defaultSequenceName": "idle",
+                    "sequences": [
+                        {
+                            "name": "idle",
+                            "fps": 12,
+                            "numColumns": 10,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 4,
+                            "textureName": "Textures/Character Idle 48x48.png"
+                        },
+                        {
+                            "name": "Run",
+                            "fps": 12,
+                            "numColumns": 8,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 12,
+                            "textureName": "Textures/run cycle 48x48.png"
+                        }
+
+
+
+
+                    ]
+
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+                    "m_damping": 0.98,
+                    "angularDamping": 2,
+                    "gravityScale": 1,
+                    "constrainAngle": true
+                },
+                {
+                    "type": "Box2DCollisionComponent"
+
+                }
+
+
+            ]
+
+        },
+        {
+            "type": "Hammer",
+            "name": "Hammer",
+            "tag": "Hammer",
+            "persistent": true,
+            "transform": {
+                "position": [ 400, 200 ],
+                "scale": 1,
+                "rotation": 0
+            },
+            "components": [
+                {
+                    "type": "SpriteComponent",
+                    "textureName": "Textures/g7538.png"
+
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+
+                    "m_damping": 0.98,
+                    "angularDamping": 2,
+                    "gravityScale": 1,
+                    "constrainAngle": true
+                },
+                {
+                    "type": "Box2DCollisionComponent",
+                    "size": [ 32, 32 ]
+                }
+            ]
         }
+
+
     ]
       
 

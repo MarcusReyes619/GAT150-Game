@@ -8,9 +8,11 @@
 #include "Compunts/Component.h"
 #include "Compunts/RenderCompunts.h"
 #include "Compunts/SpriteComponet.h"
+#include "Compunts/AnimationComponent.h"
 #include "Compunts/ModelRenderCompents.h"
 #include "Compunts/PhysicComponent.h"
 #include "Compunts/EnginePhyiscComponent.h"
+#include "Compunts/TitlemapComponent.h"
 
 
 #include "Compunts/CollsionComponent.h"
